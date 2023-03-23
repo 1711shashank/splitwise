@@ -1,0 +1,32 @@
+.chatBox{
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: #111B21;
+    /* justify-content: space-between; */
+}
+
+.chatBox-avatar > img {
+    border-radius: 50%;
+}
+
+.chatBox-details{
+    margin-left: 2rem;
+}
+
+.chatBox-name{
+    font-size: 2rem;
+    font-weight: 600;
+    color: #c1c1c1;
+}
+
+.chatBox-info{
+    display: flex;
+    align-items: center;    
+}
+
+.chatBox-info > *{
+    padding: 0.3rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
