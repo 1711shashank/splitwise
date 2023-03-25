@@ -8,7 +8,7 @@ const SplitBetweenProfiles = () => {
         <>
             <div className='SplitBetweenProfiles'>
                 <div className='SplitBetweenProfiles-left'>
-                    <Checkbox />
+                    <Checkbox defaultChecked/>
                     <div className='chatBox-avatar'>
                         <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='35px' height='35px' alt='' />
                     </div>
