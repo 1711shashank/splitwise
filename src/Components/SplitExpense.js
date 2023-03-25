@@ -7,9 +7,7 @@ import './SplitExpense.css'
 
 const SplitExpense = () => {
 
-    const { setSplitExpense,setExpenseChat } = useContext(PageContext);
-
-
+    const { setSplitExpense, setExpenseChat } = useContext(PageContext);
     const emailInput = useRef(0);
 
     useEffect(() => {

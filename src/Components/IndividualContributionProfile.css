@@ -1,0 +1,21 @@
+.IndividualContributionProfile{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: whitesmoke;
+}
+
+.IndividualContributionProfile-left{
+    display: flex;
+    align-items: center;
+}
+
+.IndividualContributionProfile-left > *{
+    padding: 0.7rem;
+    font-size: 1.8rem;
+}
+
+.IndividualContributionProfile-right > p{
+    font-size: 1.8rem;
+}
