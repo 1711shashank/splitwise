@@ -7,7 +7,7 @@ import './SplitExpense.css'
 
 const SplitExpense = () => {
 
-    const { setSplitExpense } = useContext(PageContext);
+    const { setSplitExpense,setExpenseChat } = useContext(PageContext);
 
 
     const emailInput = useRef(0);
@@ -35,7 +35,7 @@ const SplitExpense = () => {
                 </div>
 
                 <div className='splitExpense-button'>
-                    <Button variant="contained" onClick={() => setSplitExpense(false)}> Split</Button>
+                    <Button variant="contained" onClick={() => {setSplitExpense(false); setExpenseChat(true);}}> Split</Button>
                 </div>
             </div>
         </>

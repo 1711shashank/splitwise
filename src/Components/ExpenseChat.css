@@ -1,0 +1,55 @@
+.ExpenseChat{
+ background-color: #111B21;  
+}
+
+.ExpenseChat-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #1F2C33;
+}
+
+.ExpenseChat-headerName{
+    padding-left: 2rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: lightgray;
+}
+
+.ExpenseChat-headerLeft{
+    display: flex;
+    align-items: center;
+}
+
+
+.ExpenseChat-body{
+ height: auto; 
+ min-height: 100vh;
+}
+
+.ExpenseChat-footer{
+    position: fixed;
+    width: 100%;
+    background-color: #1F2C33;
+    height: auto;
+    z-index: 100;
+    bottom: 0;
+
+}
+
+
+.ExpenseChat-footer > *{
+    position: fixed;
+    padding: 2.2rem !important;
+    width: 90% !important;
+    height:4rem !important;
+    font-size: 1.5rem !important;
+    text-transform: unset !important;
+    font-weight: 500 !important;
+    border-radius: 10rem !important;
+    color: lightgray !important;
+    background-color: #118C7E !important;
+    margin: 1.5rem !important;
+    z-index: 100;
+}
