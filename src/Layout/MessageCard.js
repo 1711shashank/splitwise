@@ -3,22 +3,21 @@ import './MessageCard.css'
 
 const MessageCard = ({MessageCardSide}) => {
 
-    const MessageCardColor =  MessageCardSide === 'left' ? '#1F2C33' : '#105e55'
-    const MessageStatusColor =  MessageCardSide === 'left' ? '#FF5733' : '#68FF00'
-
-
+    const displayName =  MessageCardSide === 'left' ? 'block' : 'none'
+    const messageCardColor =  MessageCardSide === 'left' ? '#1F2C33' : '#105e55'
+    const messageStatusColor =  MessageCardSide === 'left' ? '#FF5733' : '#68FF00'
 
     return (
         <>
-            <div className='MessageCard' style={{ float: MessageCardSide, backgroundColor: MessageCardColor}}>
+            <div className='MessageCard' style={{ float: MessageCardSide, backgroundColor: messageCardColor}}>
                 <div className='MessageCard-sender'>
-                    <p> Kumar Shashank </p>
+                    <p style={{display: displayName}}> Kumar Shashank </p>
                 </div>
                 <div className='MessageCard-amount'>
                     <p> $ 550 </p>
                 </div>
                 <div className='MessageCard-status'>
-                    <p style={{color:MessageStatusColor}}>  {MessageCardSide ==='left' ? "Borrowed" : "Lended"} </p>
+                    <p style={{color:messageStatusColor}}>  {MessageCardSide ==='left' ? "Borrowed" : "Lended"} </p>
                 </div>
 
                 <div className='MessageCard-details'>
