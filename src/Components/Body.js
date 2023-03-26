@@ -1,33 +1,44 @@
 import React, { useContext } from 'react'
 import './Body.css'
-import ChatBox from './ChatBox'
+import ChatCard from '../Layout/ChatCard'
 import PageContext from '../Context/PageContext';
 import AddIcon from '@mui/icons-material/Add';
 
 
 const Body = () => {
 
-  const { setExpenseChat } = useContext(PageContext);
+  const { setShowSplitPage, setShowInboxPage, setShowMessageCardDetailPage } = useContext(PageContext);
+
+  const handalClickChatCard = () => {
+    setShowInboxPage(true);
+
+    setShowSplitPage(false);
+    setShowMessageCardDetailPage(false);
+
+
+  }
 
   return (
     <>
       <div className='body'>
-        <div onClick={() => setExpenseChat(true)}>
-          <ChatBox />
+        <div className='body-chatcard'>
+          <div onClick={handalClickChatCard}>
+            <ChatCard />
+          </div>
+          <div onClick={handalClickChatCard}>
+            <ChatCard />
+          </div>
+          <div onClick={handalClickChatCard}>
+            <ChatCard />
+          </div>
+          <div onClick={handalClickChatCard}>
+            <ChatCard />
+          </div>
+          <div onClick={handalClickChatCard}>
+            <ChatCard />
+          </div>
         </div>
-        <div onClick={() => setExpenseChat(true)}>
-          <ChatBox />
-        </div>
-        <div onClick={() => setExpenseChat(true)}>
-          <ChatBox />
-        </div>
-        <div onClick={() => setExpenseChat(true)}>
-          <ChatBox />
-        </div>
-        <div onClick={() => setExpenseChat(true)}>
-          <ChatBox />
-        </div>
-        
+
         <div className='body-addButton'>
           <AddIcon
             style={{ fontSize: '3.3rem', color: 'white' }}

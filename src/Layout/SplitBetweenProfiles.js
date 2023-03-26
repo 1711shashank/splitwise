@@ -9,10 +9,10 @@ const SplitBetweenProfiles = () => {
             <div className='SplitBetweenProfiles'>
                 <div className='SplitBetweenProfiles-left'>
                     <Checkbox defaultChecked/>
-                    <div className='chatBox-avatar'>
+                    <div className='ChatCard-avatar'>
                         <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='35px' height='35px' alt='' />
                     </div>
-                    <p className='splitExpense-profile-name'> Kumar Shashank </p>
+                    <p className='SplitPage-profile-name'> Kumar Shashank </p>
                 </div>
 
                 <div className='SplitBetweenProfiles-right'>

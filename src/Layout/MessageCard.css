@@ -6,6 +6,8 @@
     height: auto;
     padding: 1rem;
     margin: 1rem;
+    display: inline-block;
+    /* float: left; */
 }
 
 .MessageCard-sender > p{
@@ -19,7 +21,7 @@
 }
 
 .MessageCard-status > p{
-    color: lightcoral;
+    /* color: lightcoral; */
     font-weight: 600;
     font-size: 1.3rem;
     padding: 0.5rem;

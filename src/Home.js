@@ -1,34 +1,39 @@
 import React, { useState } from 'react'
 import Body from './Components/Body';
-import Header from './Components/Header';
-import ExpenseChat from './Components/ExpenseChat';
-import SplitExpense from './Components/SplitExpense';
+import Header from './Layout/Header';
+import InboxPage from './Components/InboxPage';
+import SplitPage from './Components/SplitPage';
 import PageContext from './Context/PageContext';
-import ExpenseChatDetails from './Components/ExpenseChatDetails';
+import MessageCardDetailPage from './Components/MessageCardDetailPage';
 
 
 const Home = () => {
 
-    const [splitExpense, setSplitExpense] = useState(false);
-    const [expenseChat, setExpenseChat] = useState(false);
-    const [expenseChatDetails, setExpenseChatDetails] = useState(false);
+    const [showSplitPage, setShowSplitPage] = useState(false);
+    const [showInboxPage, setShowInboxPage] = useState(false);
+    const [showMessageCardDetailPage, setShowMessageCardDetailPage] = useState(false);
 
 
     return (
 
         <div className='Home'>
-            <PageContext.Provider value={{ setSplitExpense, setExpenseChat, setExpenseChatDetails }}>
+            <PageContext.Provider value={{ setShowSplitPage, setShowInboxPage, setShowMessageCardDetailPage }}>
+
                 {
-                    expenseChatDetails 
-                    ? <ExpenseChatDetails/>
-                    : expenseChat 
-                        ? <ExpenseChat/>
-                        : splitExpense 
-                            ? <SplitExpense/> 
-                            : <> <Header/> <Body/> </>  
+                    (() => {
+                        if (showMessageCardDetailPage)
+                            return <MessageCardDetailPage />
+                        else if (showSplitPage)
+                            return <SplitPage />
+                        else if (showInboxPage)
+                            return <InboxPage />
+                        else
+                            return <> <> <Header /> <Body /> </>   </>
+
+                    })()
                 }
             </PageContext.Provider>
-            <ExpenseChatDetails/>
+            {/* <ExpenseChatDetails /> */}
         </div>
     )
 }

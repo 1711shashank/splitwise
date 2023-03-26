@@ -1,8 +1,8 @@
-.ExpenseChat{
+.InboxPage{
  background-color: #111B21;  
 }
 
-.ExpenseChat-header{
+.InboxPage-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -10,25 +10,25 @@
     background-color: #1F2C33;
 }
 
-.ExpenseChat-headerName{
+.InboxPage-headerName{
     padding-left: 2rem;
     font-size: 1.7rem;
     font-weight: 600;
     color: lightgray;
 }
 
-.ExpenseChat-headerLeft{
+.InboxPage-headerLeft{
     display: flex;
     align-items: center;
 }
 
 
-.ExpenseChat-body{
+.InboxPage-body{
  height: auto; 
  min-height: 100vh;
 }
 
-.ExpenseChat-footer{
+.InboxPage-footer{
     position: fixed;
     width: 100%;
     background-color: #1F2C33;
@@ -39,14 +39,12 @@
 }
 
 
-.ExpenseChat-footer > *{
-    position: fixed;
+.InboxPage-footer > *{
     padding: 2.2rem !important;
     width: 90% !important;
     height:4rem !important;
     font-size: 1.5rem !important;
     text-transform: unset !important;
-    font-weight: 500 !important;
     border-radius: 10rem !important;
     color: lightgray !important;
     background-color: #118C7E !important;
