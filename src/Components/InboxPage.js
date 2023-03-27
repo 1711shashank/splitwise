@@ -1,27 +1,25 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './InboxPage.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MessageCard from '../Layout/MessageCard';
-import PageContext from '../Context/PageContext';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const InboxPage = () => {
 
-    const { setShowSplitPage, setShowInboxPage, setShowMessageCardDetailPage } = useContext(PageContext);
+    const navigate = useNavigate();
 
     const handalClickBackArrow = () => {
-        setShowInboxPage(false);
+        navigate("/");
     }
 
     const handalClickMessageCard = () => {
-        setShowMessageCardDetailPage(true);
-        setShowInboxPage(false);
+        navigate("/MessageDetails");
     }
 
     const handalClickAddNew = () => {
-        setShowSplitPage(true);
-        setShowInboxPage(false);
+        navigate("/AddSplit");
     }
 
 
@@ -42,16 +40,16 @@ const InboxPage = () => {
                 </div>
                 <div className='InboxPage-body'>
                     <div onClick={handalClickMessageCard} >
-                        <MessageCard MessageCardSide={'left'}/>
+                        <MessageCard MessageCardSide={'left'} />
                     </div>
                     <div onClick={handalClickMessageCard}>
-                        <MessageCard MessageCardSide={'right'}/>
+                        <MessageCard MessageCardSide={'right'} />
                     </div>
                     <div onClick={handalClickMessageCard}>
-                        <MessageCard MessageCardSide={'left'}/>
+                        <MessageCard MessageCardSide={'left'} />
                     </div>
                     <div onClick={handalClickMessageCard}>
-                        <MessageCard MessageCardSide={'right'}/>
+                        <MessageCard MessageCardSide={'right'} />
                     </div>
                 </div>
                 <div className='InboxPage-footer' onClick={handalClickAddNew}>

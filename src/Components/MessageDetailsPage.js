@@ -1,38 +1,36 @@
-import React, { useContext } from 'react'
-import './MessageCardDetailPage.css'
+import React from 'react'
+import './MessageDetailsPage.css'
 import IndividualContributionProfile from '../Layout/IndividualContributionProfile'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import PageContext from '../Context/PageContext';
+import { useNavigate } from 'react-router-dom';
 
-const ExpenseChatDetails = () => {
+const MessageDetailsPage = () => {
 
-  const { setShowInboxPage, setShowMessageCardDetailPage } = useContext(PageContext);
-
+    const navigate = useNavigate();
 
     const handalClickBackArrow = () => {
-        setShowMessageCardDetailPage(false);
-        setShowInboxPage(true);
+        navigate('/inbox');        
     }
 
 
     return (
         <>
-            <div className='ExpenseChatDetails'>
-                <div className='ExpenseChatDetails-header'>
+            <div className='MessageDetailsPage'>
+                <div className='MessageDetailsPage-header'>
                     <ArrowBackIcon sx={{ fontSize: '3rem', color: 'lightgray', marginRight: '1rem' }} onClick={handalClickBackArrow}/>
                     <MoreVertIcon sx={{ fontSize: '3rem', color: 'lightgray', marginRight: '1rem' }} />
                 </div>
-                <div className='ExpenseChatDetails-body'>
+                <div className='MessageDetailsPage-body'>
                     <div className='ChatCard-avatar'>
                         <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='75px' height='75px' alt='' />
                     </div>
-                    <div className='ExpenseChatDetails-message'>
+                    <div className='MessageDetailsPage-message'>
                     <p>Kumar Shashank paid $ 500</p>
 
 
                     </div>
-                    <div className='ExpenseChatDetails-individualContribution'>
+                    <div className='MessageDetailsPage-individualContribution'>
 
                         <IndividualContributionProfile/>
                         <IndividualContributionProfile/>
@@ -48,4 +46,4 @@ const ExpenseChatDetails = () => {
     )
 }
 
-export default ExpenseChatDetails
+export default MessageDetailsPage

@@ -1,16 +1,13 @@
 import { Button } from '@mui/material'
-import React, { useContext } from 'react'
-import PageContext from '../Context/PageContext';
+import { useNavigate } from "react-router-dom";
 import './LoginPage.css'
 
 
 const LoginPage = () => {
 
-    const { setShowLoginPage } = useContext(PageContext);
-    
-
+    const navigate = useNavigate();
     const handalClickLoginButton = () => {
-        setShowLoginPage(false);
+        navigate("/");
     }
 
     return (
