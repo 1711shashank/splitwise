@@ -12,11 +12,12 @@ import PageContext from './Context/PageContext';
 
 const Home = () => {
 
-    const [senderName, setSenderName] = useState('');
+    const [inboxId, setInboxId] = useState('');
+    const [inboxName, setInboxName] = useState('');
     const [messageCardArray, setMessageCardArray] = useState([]);
 
     return (
-        <PageContext.Provider value={{ setSenderName, setMessageCardArray }}>
+        <PageContext.Provider value={{ setInboxId, setInboxName, setMessageCardArray }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<> <Header /> <Body /> </>}></Route>
@@ -25,7 +26,7 @@ const Home = () => {
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
                 <Routes>
-                    <Route path="/inbox" element={<InboxPage senderName={senderName} messageCardArray={messageCardArray}/>}></Route>
+                    <Route path="/inbox" element={<InboxPage inboxId={inboxId} inboxName={inboxName} messageCardArray={messageCardArray}/>}></Route>
                 </Routes>
                 <Routes>
                     <Route path="/MessageDetails" element={<MessageDetailsPage />}></Route>

@@ -3,18 +3,21 @@ import './MessageCard.css'
 
 const MessageCard = (props) => {
 
-    const {senderName, messageCard} = props;
+    const { inboxId, messageCard } = props;
 
-    const displayName =  messageCard.messageStatus === 'SEND' ? 'block' : 'none';
-    const messageCardSide =  messageCard.messageStatus === 'SEND' ? 'left' : 'right';
-    const messageCardColor =  messageCard.messageStatus === 'SEND' ? '#1F2C33' : '#105e55';
-    const messageStatusColor =  messageCard.messageStatus === 'SEND' ? '#FF5733' : '#68FF00';
+    console.log(inboxId);
+
+    const messageCardSide = messageCard.messageStatus === 'SEND' ? 'right' : 'left';
+    const messageCardColor = messageCard.messageStatus === 'SEND' ? '#105e55' : '#1F2C33';
+    const messageStatusColor = messageCard.messageStatus === 'SEND' ? '#68FF00' : '#FF5733';
+    const displayName = (messageCard.messageStatus === 'SEND' || inboxId.endsWith('individual') ) ? 'none' : 'block';
+
 
     return (
         <>
             <div className='MessageCard' style={{ float: messageCardSide, backgroundColor: messageCardColor}}>
                 <div className='MessageCard-sender'>
-                    <p style={{display: displayName}}> {senderName} </p>
+                    <p style={{display: displayName}}> {messageCard.senderName} </p>
                 </div>
 
                 <div className='MessageCard-amount'>

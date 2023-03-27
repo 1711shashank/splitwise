@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const InboxPage = (props) => {
 
-    const { senderName, messageCardArray } = props;
-
-    console.log(messageCardArray);
+    const { inboxId, inboxName, messageCardArray } = props;
 
     const navigate = useNavigate();
 
@@ -37,7 +35,7 @@ const InboxPage = (props) => {
                         <div className='ChatCard-avatar'>
                             <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='50px' height='50px' alt='' />
                         </div>
-                        <p className='InboxPage-headerName'> GN </p>
+                        <p className='InboxPage-headerName'> {inboxName} </p>
                     </div>
                     <div className='InboxPage-headerRight'>
                         <MoreVertIcon style={{ fontSize: '2.5rem', color: 'lightgray' }} />
@@ -48,7 +46,7 @@ const InboxPage = (props) => {
                     {
                         messageCardArray.map((curMessageCard) => (
                             <div onClick={handalClickMessageCard} key={curMessageCard._id}>
-                                <MessageCard senderName={senderName} messageCard={curMessageCard} />
+                                <MessageCard inboxId={inboxId} messageCard={curMessageCard} />
                             </div>
                         ))
                     }

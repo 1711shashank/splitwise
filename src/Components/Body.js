@@ -11,21 +11,22 @@ const Body = () => {
 
   const navigate = useNavigate();
 
-  const { setSenderName, setMessageCardArray } = useContext(PageContext);
+  const { setInboxId, setInboxName, setMessageCardArray } = useContext(PageContext);
 
   const [chatCardArray, setCharCardArray] = useState([]);
 
-  const handalClickChatCard = (messageCardArray, senderName) => {
+  const handalClickChatCard = ( inboxId, inboxName, messageCardArray) => {
 
     setMessageCardArray(messageCardArray);
-    setSenderName(senderName);
+    setInboxName(inboxName);
+    setInboxId(inboxId);
     navigate("/inbox");
 
   }
 
   const fetchData = async () => {
     const response = await axios.get(`http://localhost:5000/getUserData`);
-    // console.log(response.data.userData);
+    console.log(response.data.userData);
 
     setCharCardArray(response.data.userData.chatCard);
 
@@ -42,9 +43,9 @@ const Body = () => {
 
         {
           chatCardArray.map((curChatCard) => (
-            <div className='body-chatcard' key={curChatCard._id}>
-              <div onClick={ () => handalClickChatCard(curChatCard.messageCard, curChatCard.friendName) }>
-                <ChatCard name={curChatCard.friendName}/>
+            <div className='body-chatcard' key={curChatCard.inboxId}>
+              <div onClick={ () => handalClickChatCard( curChatCard.inboxId, curChatCard.inboxName, curChatCard.messageCard) }>
+                <ChatCard inboxName={curChatCard.inboxName}/>
               </div>
             </div>
           ))
