@@ -7,6 +7,7 @@ import MessageDetailsPage from './Components/MessageDetailsPage';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from './auth/LoginPage';
 import PageContext from './Context/PageContext';
+import CreateGroup from './Components/CreateGroup';
 
 
 
@@ -34,6 +35,9 @@ const Home = () => {
                 </Routes>
                 <Routes>
                     <Route path="/addSplit" element={<AddSplit inboxMemberArray={inboxMemberArray}/>}></Route>
+                </Routes>
+                <Routes>
+                    <Route path="/createGroup" element={<CreateGroup/>}></Route>
                 </Routes>
             </Router>
         </PageContext.Provider>

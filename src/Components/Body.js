@@ -3,7 +3,8 @@ import axios from 'axios';
 import './Body.css'
 import ChatCard from '../Layout/ChatCard'
 import { useNavigate } from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import PersonAddAltSharpIcon from '@mui/icons-material/PersonAddAltSharp';
 import PageContext from '../Context/PageContext';
 import uniqid from 'uniqid';
 
@@ -25,7 +26,12 @@ const Body = () => {
     setInboxType(inboxType);
     navigate("/inbox");
   }
+  const handalClickCreateGroup = () => {
+    navigate("/createGroup");
+  }
+  const handalClickNewChat = () => {
 
+  }
   const fetchData = async () => {
     const response = await axios.get(`http://localhost:5000/getUserData`);
     console.log(response.data.userData);
@@ -52,10 +58,14 @@ const Body = () => {
             </div>
           ))
         }
-
-        <div className='body-addButton'>
-          <AddIcon
-            style={{ fontSize: '3.3rem', color: 'white' }}
+        <div className='body-createGroup' onClick={handalClickCreateGroup}>
+          <GroupAddIcon
+            style={{ fontSize: '3.3rem', color: 'white',padding: '5px' }}
+          />
+        </div>
+        <div className='body-createInbox' onClick={handalClickNewChat}>
+          <PersonAddAltSharpIcon
+            style={{ fontSize: '3.3rem', color: 'white',padding: '5px' }}
           />
         </div>
       </div>
