@@ -3,7 +3,12 @@ import './SplitBetweenProfiles.css'
 import { Checkbox, Input } from '@mui/material';
 
 
-const SplitBetweenProfiles = () => {
+const SplitBetweenProfiles = (props) => {
+
+    const { inboxMember } = props;
+
+    console.log(inboxMember);
+
     return (
         <>
             <div className='SplitBetweenProfiles'>
@@ -12,7 +17,7 @@ const SplitBetweenProfiles = () => {
                     <div className='ChatCard-avatar'>
                         <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='35px' height='35px' alt='' />
                     </div>
-                    <p className='AddSplit-profile-name'> Kumar Shashank </p>
+                    <p className='AddSplit-profile-name'> {inboxMember.name} </p>
                 </div>
 
                 <div className='SplitBetweenProfiles-right'>

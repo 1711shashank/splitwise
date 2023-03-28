@@ -3,14 +3,14 @@ import './MessageCard.css'
 
 const MessageCard = (props) => {
 
-    const { inboxId, messageCard } = props;
+    const { inboxType, messageCard } = props;
 
-    console.log(inboxId);
+    console.log(inboxType, messageCard);
 
     const messageCardSide = messageCard.messageStatus === 'SEND' ? 'right' : 'left';
     const messageCardColor = messageCard.messageStatus === 'SEND' ? '#105e55' : '#1F2C33';
     const messageStatusColor = messageCard.messageStatus === 'SEND' ? '#68FF00' : '#FF5733';
-    const displayName = (messageCard.messageStatus === 'SEND' || inboxId.endsWith('individual') ) ? 'none' : 'block';
+    const displayName = (messageCard.messageStatus === 'SEND' || inboxType === 'INDIVIDUAL' ) ? 'none' : 'block';
 
 
     return (

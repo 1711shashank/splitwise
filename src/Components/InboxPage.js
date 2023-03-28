@@ -5,10 +5,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MessageCard from '../Layout/MessageCard';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import uniqid from 'uniqid';
 
 const InboxPage = (props) => {
 
-    const { inboxId, inboxName, messageCardArray } = props;
+    const { inboxType, inboxName, messageCardArray } = props;
+
+    console.log(inboxType, inboxName, messageCardArray);
 
     const navigate = useNavigate();
 
@@ -45,8 +48,8 @@ const InboxPage = (props) => {
                 <div className='InboxPage-body'>
                     {
                         messageCardArray.map((curMessageCard) => (
-                            <div onClick={handalClickMessageCard} key={curMessageCard._id}>
-                                <MessageCard inboxId={inboxId} messageCard={curMessageCard} />
+                            <div onClick={handalClickMessageCard} key={ uniqid() }>
+                                <MessageCard inboxType={inboxType} messageCard={curMessageCard} />
                             </div>
                         ))
                     }

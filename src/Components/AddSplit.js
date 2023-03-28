@@ -3,10 +3,14 @@ import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SplitBetweenProfiles from '../Layout/SplitBetweenProfiles'
 import './AddSplit.css'
+import uniqid from 'uniqid';
 
 
-const AddSplit = () => {
-    
+
+const AddSplit = (props) => {
+
+    const { inboxMemberArray } = props;
+
     const navigate = useNavigate();
     const emailInput = useRef(0);
 
@@ -22,7 +26,9 @@ const AddSplit = () => {
 
     return (
         <>
+
             <div className='AddSplit'>
+
                 <div className='AddSplit-details'>
                     <p className='AddSplit-text'>Total</p>
                     <input className='AddSplit-total' type='number' placeholder='0' ref={emailInput} />
@@ -30,10 +36,11 @@ const AddSplit = () => {
                 </div>
 
                 <div className='AddSplit-profiles'>
-                    <SplitBetweenProfiles />
-                    <SplitBetweenProfiles />
-                    <SplitBetweenProfiles />
-                    <SplitBetweenProfiles />
+                    {inboxMemberArray.map((inboxMember) => (
+                        <div key={uniqid()}>
+                        <SplitBetweenProfiles inboxMember={inboxMember} />
+                        </div>
+                    ))}
                 </div>
 
                 <div className='AddSplit-button'>
