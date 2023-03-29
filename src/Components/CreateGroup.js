@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { OutlinedInput, InputLabel, MenuItem, Select, FormControl, Chip, ListItemText, Avatar, Button, TextField } from "@mui/material";
 import axios from "axios";
-// import './CreateGroup.css'
+import './CreateGroup.css'
 import { useNavigate } from "react-router-dom";
+import { Minimize } from "@mui/icons-material";
 
 
 const CreateGroup = () => {
@@ -34,7 +35,7 @@ const CreateGroup = () => {
 
     return (
         <>
-            <div className="CreateGroup" onSubmit={handalClickCreateGroup} style={{height: '100vh'}}>
+            <div className="CreateGroup" onSubmit={handalClickCreateGroup} >
                 <TextField 
                     required
                     id="outlined-basic"     
@@ -42,8 +43,8 @@ const CreateGroup = () => {
                     variant="outlined" 
                     color='success' 
                     onChange={(e) => setGroupName(e.target.value)}
-                    sx={{ m: 2, width: 400 }} />
-                <FormControl variant="outlined" color='success' sx={{ m: 1, width: 400 }}>
+                    sx={{ m: 2, width: '80%', maxWidth: 400 }} />
+                <FormControl variant="outlined" color='success' sx={{ m: 1, width: '80%', maxWidth: 400 }}>
                     <InputLabel id="select-label">Add Member</InputLabel>
                     <Select
                         multiple
