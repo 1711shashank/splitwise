@@ -3,22 +3,19 @@ import { OutlinedInput, InputLabel, MenuItem, Select, FormControl, Chip, ListIte
 import axios from "axios";
 import './CreateGroup.css'
 import { useNavigate } from "react-router-dom";
-import { Minimize } from "@mui/icons-material";
 
 
 const CreateGroup = () => {
 
     const navigate = useNavigate();
 
-
     const [selectedNames, setSelectedNames] = useState([]);
     const [groupName, setGroupName] = useState([]);
     const [userList, setUserList] = useState([]);
 
     const handalClickCreateGroup = async () => {
-        console.log(selectedNames);
-        
-        await axios.post(`http://localhost:5000/createGroup`, { _id:'64230141bdb38307719b55c4', groupName:groupName, inboxMember:selectedNames});
+
+        await axios.post(`http://localhost:5000/createGroup`, { _id: '64230141bdb38307719b55c4', groupName: groupName, inboxMember: selectedNames });
 
         navigate("/");
 
@@ -36,15 +33,18 @@ const CreateGroup = () => {
     return (
         <>
             <div className="CreateGroup" onSubmit={handalClickCreateGroup} >
-                <TextField 
+                <TextField
                     required
-                    id="outlined-basic"     
-                    label="Group Name" 
-                    variant="outlined" 
-                    color='success' 
+                    id="outlined-basic"
+                    label="Group Name"
+                    variant="outlined"
+                    color='success'
                     onChange={(e) => setGroupName(e.target.value)}
                     sx={{ m: 2, width: '80%', maxWidth: 400 }} />
-                <FormControl variant="outlined" color='success' sx={{ m: 1, width: '80%', maxWidth: 400 }}>
+                <FormControl
+                    variant="outlined"
+                    color='success'
+                    sx={{ m: 1, width: '80%', maxWidth: 400 }}>
                     <InputLabel id="select-label">Add Member</InputLabel>
                     <Select
                         multiple
@@ -54,7 +54,7 @@ const CreateGroup = () => {
                         onChange={(event) => setSelectedNames(event.target.value)}
                         input={<OutlinedInput label="Add Member" />}
                         renderValue={(selected) => (
-                            <div style={{ display: 'flex', flexWrap: 'wrap'}}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 {selected.map((pair) => (
                                     <Chip
                                         key={pair.email}
@@ -66,13 +66,16 @@ const CreateGroup = () => {
                                     />
                                 ))}
                             </div>
-                        )}
-                    >
-                        {userList.map((user) => (
-                            <MenuItem key={user.value} value={user}>
-                                <ListItemText primary={user.name} secondary={user.email} />
-                            </MenuItem>
-                        ))}
+                        )}>
+
+                        {
+                            userList.map((user) => (
+                                <MenuItem key={user.value} value={user}>
+                                    <ListItemText primary={user.name} secondary={user.email} />
+                                </MenuItem>
+                            ))
+                        }
+
                     </Select>
                 </FormControl>
             </div>

@@ -19,16 +19,28 @@
     padding: 1rem;
 }
 
-.MessageCard-status > p{
-    font-weight: 600;
-    font-size: 1.3rem;
-    padding: 0.5rem;
-    text-align: left;
-}
 
 .MessageCard-details{
     display: flex;
+    /* flex-direction: column; */
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end ;
     padding: 0 0.5rem;
+}
+
+
+.MessageCard-left{
+    text-align: left;
+    max-width: 70%;
+}
+
+.MessageCard-status{
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+}
+
+.MessageCard-right { 
+    text-align: right;
+    
 }

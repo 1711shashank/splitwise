@@ -13,13 +13,14 @@ import CreateGroup from './Components/CreateGroup';
 
 const Home = () => {
 
+    const [inboxId, setInboxId] = useState('');
     const [inboxType, setInboxType] = useState('');
     const [inboxName, setInboxName] = useState('');
     const [inboxMemberArray, setInboxMemberArray] = useState([]);
     const [messageCardArray, setMessageCardArray] = useState([]);
 
     return (
-        <PageContext.Provider value={{ setInboxType, setInboxName, setInboxMemberArray, setMessageCardArray }}>
+        <PageContext.Provider value={{ setInboxId, setInboxType, setInboxName, setInboxMemberArray, setMessageCardArray }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<> <Header /> <Body /> </>}></Route>
@@ -34,7 +35,7 @@ const Home = () => {
                     <Route path="/MessageDetails" element={<MessageDetailsPage />}></Route>
                 </Routes>
                 <Routes>
-                    <Route path="/addSplit" element={<AddSplit inboxMemberArray={inboxMemberArray}/>}></Route>
+                    <Route path="/addSplit" element={<AddSplit inboxId={inboxId} inboxMemberArray={inboxMemberArray}/>}></Route>
                 </Routes>
                 <Routes>
                     <Route path="/createGroup" element={<CreateGroup/>}></Route>

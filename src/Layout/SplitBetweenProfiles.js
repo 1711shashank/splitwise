@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SplitBetweenProfiles.css'
 import { Checkbox, Input } from '@mui/material';
 
 
 const SplitBetweenProfiles = (props) => {
 
-    const { inboxMember } = props;
-
-    console.log(inboxMember);
+    const { inboxMember, contributionAmount } = props;
 
     return (
         <>
@@ -21,13 +19,11 @@ const SplitBetweenProfiles = (props) => {
                 </div>
 
                 <div className='SplitBetweenProfiles-right'>
-                    <Input
-                        defaultValue='100000'
-                        sx={{ fontSize: '16px', width: 80, color: 'white', padding: '0 10px' }}
-                    />
+                    <p style={{ fontSize: '16px', width: 80, color: 'white', padding: '0 10px' }}>
+                        {contributionAmount}
+                    </p>
                 </div>
             </div>
-
         </>
     )
 }

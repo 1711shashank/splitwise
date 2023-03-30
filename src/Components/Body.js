@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import PersonAddAltSharpIcon from '@mui/icons-material/PersonAddAltSharp';
 import PageContext from '../Context/PageContext';
-import uniqid from 'uniqid';
 
 
 
@@ -14,16 +13,18 @@ const Body = () => {
 
   const navigate = useNavigate();
 
-  const { setInboxType, setInboxName, setInboxMemberArray, setMessageCardArray } = useContext(PageContext);
+  const { setInboxId, setInboxType, setInboxName, setInboxMemberArray, setMessageCardArray } = useContext(PageContext);
 
   const [chatCardArray, setCharCardArray] = useState([]);
 
-  const handalClickChatCard = (inboxType, inboxName, inboxMember, messageCardArray) => {
+  const handalClickChatCard = ( inboxId, inboxType, inboxName, inboxMember, messageCardArray) => {
 
     setMessageCardArray(messageCardArray);
     setInboxMemberArray(inboxMember);
     setInboxName(inboxName);
     setInboxType(inboxType);
+    setInboxId(inboxId);
+
     navigate("/inbox");
   }
   const handalClickCreateGroup = () => {
@@ -51,8 +52,8 @@ const Body = () => {
 
         {
           chatCardArray.map((curChatCard) => (
-            <div className='body-chatcard' key={uniqid()}>
-              <div onClick={() => handalClickChatCard(curChatCard.inboxType, curChatCard.inboxName, curChatCard.inboxMember, curChatCard.messageCard)}>
+            <div className='body-chatcard' key={curChatCard._id}>
+              <div onClick={() => handalClickChatCard( curChatCard._id, curChatCard.inboxType, curChatCard.inboxName, curChatCard.inboxMember, curChatCard.messageCard)}>
                 <ChatCard inboxName={curChatCard.inboxName} />
               </div>
             </div>
