@@ -5,7 +5,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from 'react-router-dom';
 
-const MessageDetailsPage = () => {
+const MessageDetailsPage = (props) => {
+
+    console.log( props );
 
     const navigate = useNavigate();
 

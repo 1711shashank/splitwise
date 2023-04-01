@@ -24,7 +24,6 @@ const Body = () => {
     setInboxName(inboxName);
     setInboxType(inboxType);
     setInboxId(inboxId);
-
     navigate("/inbox");
   }
   const handalClickCreateGroup = () => {

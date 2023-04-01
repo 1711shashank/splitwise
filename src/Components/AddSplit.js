@@ -1,19 +1,20 @@
 import { Button } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SplitBetweenProfiles from '../Layout/SplitBetweenProfiles'
 import './AddSplit.css'
 import uniqid from 'uniqid';
 import axios from 'axios'
+import PageContext from '../Context/PageContext'
 
 
 
 const AddSplit = (props) => {
 
     const { inboxId, inboxMemberArray } = props;
+    const { setMessageCardId } = useContext(PageContext);
 
     const numberOfMembers = inboxMemberArray.length;
-    console.log(numberOfMembers);
 
     const [amount, setAmount] = useState(0);
     const [message, setMessage] = useState('');
@@ -29,10 +30,13 @@ const AddSplit = (props) => {
 
     const handalClickSplitButton = async () => {
 
+        const messageCardId = uniqid();
+        setMessageCardId(messageCardId);
 
         const newEntry = {
             userId: '64230141bdb38307719b55c4', 
             inboxId: inboxId, 
+            messageCardId : messageCardId,
             amount: amount, 
             date: new Date().toString(),
             message: message, 

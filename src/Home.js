@@ -16,11 +16,12 @@ const Home = () => {
     const [inboxId, setInboxId] = useState('');
     const [inboxType, setInboxType] = useState('');
     const [inboxName, setInboxName] = useState('');
+    const [messageCardId, setMessageCardId] = useState('');
     const [inboxMemberArray, setInboxMemberArray] = useState([]);
     const [messageCardArray, setMessageCardArray] = useState([]);
 
     return (
-        <PageContext.Provider value={{ setInboxId, setInboxType, setInboxName, setInboxMemberArray, setMessageCardArray }}>
+        <PageContext.Provider value={{ setInboxId, setInboxType, setInboxName, setMessageCardId, setInboxMemberArray, setMessageCardArray }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<> <Header /> <Body /> </>}></Route>
@@ -28,11 +29,11 @@ const Home = () => {
                 <Routes>
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
-                <Routes>
-                    <Route path="/inbox" element={<InboxPage inboxType={inboxType} inboxName={inboxName} messageCardArray={messageCardArray}/>}></Route>
+                <Routes >
+                    <Route path="/inbox" element={<InboxPage inboxId={inboxId}/> } ></Route>
                 </Routes>
                 <Routes>
-                    <Route path="/MessageDetails" element={<MessageDetailsPage />}></Route>
+                    <Route path="/MessageDetails" element={<MessageDetailsPage messageCardId={messageCardId} inboxMemberArray={inboxMemberArray}/>}></Route>
                 </Routes>
                 <Routes>
                     <Route path="/addSplit" element={<AddSplit inboxId={inboxId} inboxMemberArray={inboxMemberArray}/>}></Route>
