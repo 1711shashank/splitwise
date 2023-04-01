@@ -5,10 +5,8 @@ import moment from 'moment';
 
 const MessageCard = (props) => {
 
-    const { inboxType, messageCard } = props;
-
-    console.log(inboxType, messageCard);
-
+    const { messageCard, inboxType } = props;
+    
     const messageCardSide = messageCard.messageStatus === 'SEND' ? 'right' : 'left';
     const messageCardColor = messageCard.messageStatus === 'SEND' ? '#105e55' : '#1F2C33';
     const messageStatusColor = messageCard.messageStatus === 'SEND' ? '#68FF00' : '#FF5733';

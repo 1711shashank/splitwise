@@ -11,6 +11,9 @@ const InboxPage = (props) => {
 
     const navigate = useNavigate();
 
+    const [inboxData, setIndoxData] = useState({});
+    const [messageCardArray, setMessageCardArray] = useState([]);
+
 
     const { inboxId } = props;
 
@@ -19,6 +22,7 @@ const InboxPage = (props) => {
     }
 
     const handalClickBackArrow = () => {
+        localStorage.removeItem('inboxId');
         navigate("/");
     }
 
@@ -32,13 +36,14 @@ const InboxPage = (props) => {
 
     const fetchData = async () => {
         const response = await axios.get(`http://localhost:5000/getInboxData/${localStorage.getItem('inboxId')}`);
-        // console.log(response.data);
+        setIndoxData(response.data.inboxData[0]);
+        setMessageCardArray(response.data.inboxData[0].messageCard)
     };
 
 
     useEffect(() => {
         fetchData();
-    })
+    }, [])
 
 
 
@@ -52,7 +57,7 @@ const InboxPage = (props) => {
                         <div className='ChatCard-avatar'>
                             <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='50px' height='50px' alt='' />
                         </div>
-                        <p className='InboxPage-headerName'> {localStorage.getItem('inboxId')} </p>
+                        <p className='InboxPage-headerName'> {inboxData.inboxName} </p>
                     </div>
                     <div className='InboxPage-headerRight'>
                         <MoreVertIcon style={{ fontSize: '2.5rem', color: 'lightgray' }} />
@@ -60,13 +65,11 @@ const InboxPage = (props) => {
                 </div>
 
                 <div className='InboxPage-body'>
-                    {/* {
-                        messageCardArray123.map((curMessageCard) => (
-                            <div onClick={handalClickMessageCard} key={ uniqid() }>
-                                <MessageCard inboxType={inboxType} messageCard={curMessageCard} />
-                            </div>
+                    {
+                        messageCardArray.map((curMessageCard) => (
+                            <MessageCard messageCard={curMessageCard} inboxType={inboxData.inboxType} key={curMessageCard.messageCardId}/>
                         ))
-                    } */}
+                    }
                 </div>
 
                 <div className='InboxPage-footer' onClick={handalClickAddNew}>
