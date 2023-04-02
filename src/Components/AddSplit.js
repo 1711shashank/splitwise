@@ -7,7 +7,6 @@ import uniqid from 'uniqid';
 import axios from 'axios'
 
 
-
 const AddSplit = (props) => {
 
     const { inboxId } = props;
@@ -20,9 +19,12 @@ const AddSplit = (props) => {
     const emailInput = useRef(0);
     const numberOfMembers = inboxMemberArray.length;
 
+    console.log(inboxMemberArray);
+
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:5000/getInboxData/${localStorage.getItem('inboxId')}`);
-        setInboxMemberArray(response.data.inboxData[0].inboxMember)
+        const response = await axios.post(`http://localhost:5000/getMessages`, { inboxId: localStorage.getItem('inboxId') });
+        console.log(response.data.inboxData.inboxMember)
+        setInboxMemberArray(response.data.inboxData.inboxMember)
     };
 
     useEffect(() => {
@@ -34,17 +36,17 @@ const AddSplit = (props) => {
 
     const handalClickSplitButton = async () => {
 
-        const newEntry = {
-            userId: '64230141bdb38307719b55c4', 
-            inboxId: inboxId, 
+        const newMessage = {
+            inboxId : localStorage.getItem('inboxId'),
             messageCardId : uniqid(),
             amount: amount, 
             date: new Date().toString(),
             message: message, 
-            messageStatus: 'SEND'
+            senderName:'senderName',
+            splitBetween:['gyuu','aksjdh','wkjhew']
         }
 
-        await axios.post(`http://localhost:5000/sentMessage`, { newEntry });
+        await axios.post(`http://localhost:5000/sentMessage`, { newMessage });
 
         navigate("/inbox");
 
@@ -63,7 +65,6 @@ const AddSplit = (props) => {
                 <div className='AddSplit-profiles'>
                     {inboxMemberArray.map((curInboxMember) => (
                         <div key={uniqid()}>
-                            {console.log(curInboxMember)}
                             <SplitBetweenProfiles inboxMember={curInboxMember} contributionAmount={amount / numberOfMembers} />
                         </div>
                     ))}

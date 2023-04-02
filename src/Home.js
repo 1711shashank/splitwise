@@ -3,7 +3,6 @@ import Body from './Components/Body';
 import Header from './Layout/Header';
 import InboxPage from './Components/InboxPage';
 import AddSplit from './Components/AddSplit';
-import MessageDetailsPage from './Components/MessageDetailsPage';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from './auth/LoginPage';
 import PageContext from './Context/PageContext';
@@ -30,10 +29,7 @@ const Home = () => {
                     <Route path="/login" element={<LoginPage />}></Route>
                 </Routes>
                 <Routes >
-                    <Route path="/inbox" element={<InboxPage inboxId={inboxId}/> } ></Route>
-                </Routes>
-                <Routes>
-                    <Route path="/MessageDetails" element={<MessageDetailsPage messageCardId={messageCardId} inboxMemberArray={inboxMemberArray}/>}></Route>
+                    <Route path="/inbox" element={<InboxPage/> } ></Route>
                 </Routes>
                 <Routes>
                     <Route path="/addSplit" element={<AddSplit inboxId={inboxId} inboxMemberArray={inboxMemberArray}/>}></Route>

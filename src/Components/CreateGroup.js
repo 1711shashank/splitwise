@@ -15,7 +15,7 @@ const CreateGroup = () => {
 
     const handalClickCreateGroup = async () => {
 
-        await axios.post(`http://localhost:5000/createGroup`, { _id: '64230141bdb38307719b55c4', groupName: groupName, inboxMember: selectedNames });
+        await axios.post(`http://localhost:5000/createGroup`, { inboxName: groupName, inboxMember: selectedNames });
 
         navigate("/");
 
@@ -24,6 +24,7 @@ const CreateGroup = () => {
     const fetchData = async () => {
         const response = await axios.get(`http://localhost:5000/getUserList`);
         setUserList(response.data.userList);
+        console.log(response.data.userList);
     }
 
     useEffect(() => {

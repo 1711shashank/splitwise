@@ -7,27 +7,16 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const InboxPage = (props) => {
+const InboxPage = () => {
 
     const navigate = useNavigate();
 
     const [inboxData, setIndoxData] = useState({});
     const [messageCardArray, setMessageCardArray] = useState([]);
 
-
-    const { inboxId } = props;
-
-    if (!localStorage.getItem('inboxId')) {
-        localStorage.setItem('inboxId', inboxId);
-    }
-
     const handalClickBackArrow = () => {
         localStorage.removeItem('inboxId');
         navigate("/");
-    }
-
-    const handalClickMessageCard = () => {
-        navigate("/MessageDetails");
     }
 
     const handalClickAddNew = () => {
@@ -35,9 +24,10 @@ const InboxPage = (props) => {
     }
 
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:5000/getInboxData/${localStorage.getItem('inboxId')}`);
-        setIndoxData(response.data.inboxData[0]);
-        setMessageCardArray(response.data.inboxData[0].messageCard)
+        const response = await axios.post(`http://localhost:5000/getMessages`, { inboxId: localStorage.getItem('inboxId') });
+        
+        setIndoxData(response.data.inboxData);
+        setMessageCardArray(response.data.inboxData.messageCard);
     };
 
 
@@ -75,7 +65,7 @@ const InboxPage = (props) => {
                 <div className='InboxPage-footer' onClick={handalClickAddNew}>
                     <Button variant="contained"> Add New </Button>
                 </div>
-
+                
             </div>
         </>
     )

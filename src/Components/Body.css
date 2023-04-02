@@ -6,16 +6,6 @@
 
 .body-createGroup{
     position: fixed;
-    bottom:10rem;
-    right: 2rem;
-    z-index: 1;
-    background-color: #128C7E;
-    padding: 1rem;
-    border-radius: 50%;
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5)
-}
-.body-createInbox{
-    position: fixed;
     bottom: 2rem;
     right: 2rem;
     z-index: 1;
