@@ -1,23 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './Body.css'
 import ChatCard from '../Layout/ChatCard'
 import { useNavigate } from "react-router-dom";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
-import PageContext from '../Context/PageContext';
 
 
 
 const Body = () => {
 
     const navigate = useNavigate();
-
-    // const { setInboxId } = useContext(PageContext);
-
     const [inboxList, setInboxList] = useState([]);
 
     const handalClickChatCard = (inboxId) => {
-        // setInboxId(inboxId);
         localStorage.setItem('inboxId',inboxId);
         navigate("/inbox");
     }
@@ -38,7 +33,6 @@ const Body = () => {
     return (
         <>
             <div className='body'>
-
                 {
                     inboxList.map((curIndexList) => (
                         <div className='body-chatcard' key={curIndexList._id}>

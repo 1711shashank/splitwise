@@ -8,8 +8,6 @@ import axios from 'axios'
 
 
 const AddSplit = (props) => {
-
-    const { inboxId } = props;
     
     const [amount, setAmount] = useState(0);
     const [message, setMessage] = useState('');

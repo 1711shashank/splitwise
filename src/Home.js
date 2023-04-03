@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Body from './Components/Body';
 import Header from './Layout/Header';
 import InboxPage from './Components/InboxPage';
@@ -13,29 +13,55 @@ import CreateGroup from './Components/CreateGroup';
 const Home = () => {
 
     const [inboxId, setInboxId] = useState('');
-    const [inboxType, setInboxType] = useState('');
-    const [inboxName, setInboxName] = useState('');
-    const [messageCardId, setMessageCardId] = useState('');
     const [inboxMemberArray, setInboxMemberArray] = useState([]);
-    const [messageCardArray, setMessageCardArray] = useState([]);
+
+
+    useEffect(() => {
+        document.title = 'Splitwise';
+    }, [])
+
+    useEffect(() => {
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        const name = urlParams.get('name');
+
+        if (email) {
+            console.log('hkg');
+
+            localStorage.setItem('Email', email);
+            localStorage.setItem('Name', name);
+
+            window.location.href = 'http://localhost:3000';
+        }
+
+    }, []);
 
     return (
-        <PageContext.Provider value={{ setInboxId, setInboxType, setInboxName, setMessageCardId, setInboxMemberArray, setMessageCardArray }}>
+        <PageContext.Provider value={{ setInboxId, setInboxMemberArray }}>
             <Router>
                 <Routes>
-                    <Route path="/" element={<> <Header /> <Body /> </>}></Route>
-                </Routes>
-                <Routes>
-                    <Route path="/login" element={<LoginPage />}></Route>
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                {
+                                    localStorage.getItem('Email') === null
+                                        ? <LoginPage />
+                                        : <><Header /> <Body /> </>
+                                }
+                            </>
+                        }
+                    />
                 </Routes>
                 <Routes >
-                    <Route path="/inbox" element={<InboxPage/> } ></Route>
+                    <Route path="/inbox" element={<InboxPage />} />
                 </Routes>
                 <Routes>
-                    <Route path="/addSplit" element={<AddSplit inboxId={inboxId} inboxMemberArray={inboxMemberArray}/>}></Route>
+                    <Route path="/addSplit" element={<AddSplit inboxId={inboxId} inboxMemberArray={inboxMemberArray} />} />
                 </Routes>
                 <Routes>
-                    <Route path="/createGroup" element={<CreateGroup/>}></Route>
+                    <Route path="/createGroup" element={<CreateGroup />} />
                 </Routes>
             </Router>
         </PageContext.Provider>

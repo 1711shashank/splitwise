@@ -1,14 +1,17 @@
 import { Button } from '@mui/material'
-import { useNavigate } from "react-router-dom";
 import './LoginPage.css'
 
 
 const LoginPage = () => {
 
-    const navigate = useNavigate();
-    const handalClickLoginButton = () => {
-        navigate("/");
-    }
+    const handalClickLoginButton = async () => {
+        try {
+            window.location.href = 'http://localhost:5000/oauth';
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     return (
         <>
