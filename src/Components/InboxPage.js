@@ -28,6 +28,7 @@ const InboxPage = () => {
         
         setIndoxData(response.data.inboxData);
         setMessageCardArray(response.data.inboxData.messageCard);
+        console.log(response.data.inboxData.messageCard);
     };
 
 
@@ -57,7 +58,7 @@ const InboxPage = () => {
                 <div className='InboxPage-body'>
                     {
                         messageCardArray.map((curMessageCard) => (
-                            <MessageCard messageCard={curMessageCard} inboxType={inboxData.inboxType} key={curMessageCard.messageCardId}/>
+                            <MessageCard messageCard={curMessageCard} key={curMessageCard.messageCardId}/>
                         ))
                     }
                 </div>

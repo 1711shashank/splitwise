@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './MessageCard.css'
 import moment from 'moment';
 
 
 const MessageCard = (props) => {
 
-    const { messageCard, inboxType } = props;
+    const { messageCard } = props;
     
-    const messageCardSide = messageCard.messageStatus === 'SEND' ? 'right' : 'left';
-    const messageCardColor = messageCard.messageStatus === 'SEND' ? '#105e55' : '#1F2C33';
-    const messageStatusColor = messageCard.messageStatus === 'SEND' ? '#68FF00' : '#FF5733';
-    const displayName = (messageCard.messageStatus === 'SEND' || inboxType === 'INDIVIDUAL') ? 'none' : 'block';
+    const messageCardSide = messageCard.senderEmail === localStorage.getItem('email') ? 'right' : 'left';
+    const messageCardColor = messageCard.senderEmail === localStorage.getItem('email') ? '#105e55' : '#1F2C33';
+    const messageStatusColor = messageCard.senderEmail === localStorage.getItem('email') ? '#68FF00' : '#FF5733';
+    const displayName = messageCard.senderEmail === localStorage.getItem('email') ? 'none' : 'block';
+
 
 
     return (

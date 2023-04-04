@@ -24,9 +24,11 @@ const Home = () => {
 
         const urlParams = new URLSearchParams(window.location.search);
         const authToken = urlParams.get('authToken');
+        const email = urlParams.get('email');
 
         if (authToken) {
             localStorage.setItem('authToken', authToken);
+            localStorage.setItem('email', email);
 
             window.location.href = 'http://localhost:3000';
         }
