@@ -69,6 +69,30 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
+.AddSplit-SplitBetweenProfiles{
+    width: 100vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    color: whitesmoke !important;
+    padding: 0 3rem !important;
+    
+}
+.AddSplit-SplitBetweenProfiles-left{
+    display: flex;
+    align-items: center;
+}
+
+.AddSplit-SplitBetweenProfiles-left > *{
+    padding: 0.7rem;
+    font-size: 1.8rem;
+}
+
+.AddSplit-SplitBetweenProfiles-right{
+    float: right;
+}
+
+
 
 .AddSplit-button > *{
     padding: 2.2rem !important;
@@ -82,3 +106,8 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #118C7E !important;
    
 }
+
+
+
+
+
