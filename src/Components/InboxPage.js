@@ -24,7 +24,7 @@ const InboxPage = () => {
     }
 
     const fetchData = async () => {
-        const response = await axios.post(`http://localhost:5000/getMessages`, { inboxId: localStorage.getItem('inboxId') });
+        const response = await axios.post(`http://localhost:5000/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
         
         setIndoxData(response.data.inboxData);
         setMessageCardArray(response.data.inboxData.messageCard);

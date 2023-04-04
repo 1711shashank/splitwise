@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SplitBetweenProfiles from '../Layout/SplitBetweenProfiles'
 import './AddSplit.css'
-import uniqid from 'uniqid';
+import uniqid from 'uniqid'
 import axios from 'axios'
 
 
@@ -17,11 +17,8 @@ const AddSplit = (props) => {
     const emailInput = useRef(0);
     const numberOfMembers = inboxMemberArray.length;
 
-    console.log(inboxMemberArray);
-
     const fetchData = async () => {
-        const response = await axios.post(`http://localhost:5000/getMessages`, { inboxId: localStorage.getItem('inboxId') });
-        console.log(response.data.inboxData.inboxMember)
+        const response = await axios.post(`http://localhost:5000/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
         setInboxMemberArray(response.data.inboxData.inboxMember)
     };
 
@@ -40,11 +37,11 @@ const AddSplit = (props) => {
             amount: amount, 
             date: new Date().toString(),
             message: message, 
-            senderName:'senderName',
+            senderName: 'senderName',
             splitBetween:['gyuu','aksjdh','wkjhew']
         }
 
-        await axios.post(`http://localhost:5000/sentMessage`, { newMessage });
+        await axios.post(`http://localhost:5000/sentMessage`, { authToken: localStorage.getItem('authToken'), newMessage });
 
         navigate("/inbox");
 

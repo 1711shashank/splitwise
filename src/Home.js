@@ -23,14 +23,10 @@ const Home = () => {
     useEffect(() => {
 
         const urlParams = new URLSearchParams(window.location.search);
-        const email = urlParams.get('email');
-        const name = urlParams.get('name');
+        const authToken = urlParams.get('authToken');
 
-        if (email) {
-            console.log('hkg');
-
-            localStorage.setItem('Email', email);
-            localStorage.setItem('Name', name);
+        if (authToken) {
+            localStorage.setItem('authToken', authToken);
 
             window.location.href = 'http://localhost:3000';
         }
@@ -46,7 +42,7 @@ const Home = () => {
                         element={
                             <>
                                 {
-                                    localStorage.getItem('Email') === null
+                                    localStorage.getItem('authToken') === null
                                         ? <LoginPage />
                                         : <><Header /> <Body /> </>
                                 }

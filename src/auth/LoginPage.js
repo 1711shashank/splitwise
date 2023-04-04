@@ -12,7 +12,7 @@ const LoginPage = () => {
         }
     };
 
-
+    
     return (
         <>
             <div className='LoginPage'>

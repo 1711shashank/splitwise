@@ -15,16 +15,15 @@ const CreateGroup = () => {
 
     const handalClickCreateGroup = async () => {
 
-        await axios.post(`http://localhost:5000/createGroup`, { inboxName: groupName, inboxMember: selectedNames });
+        await axios.post(`http://localhost:5000/createGroup`, { authToken: localStorage.getItem('authToken'), inboxName: groupName, inboxMember: selectedNames });
 
         navigate("/");
 
     }
 
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:5000/getUserList`);
+        const response = await axios.post(`http://localhost:5000/getUserList`, {authToken: localStorage.getItem('authToken')});
         setUserList(response.data.userList);
-        console.log(response.data.userList);
     }
 
     useEffect(() => {

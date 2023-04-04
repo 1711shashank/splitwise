@@ -9,11 +9,14 @@
 
 .LoginPage-heading{
     font-size: 2.5rem;
+    width: 80%;
+    max-width: 40rem;
 }
 
 .LoginPage-image{
     margin: 4rem 0 4rem 0;
-    width: 60%;
+    width: 80%;
+    max-width: 40rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: contain;
@@ -27,6 +30,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 70%;
+    max-width: 40rem;
+
 }
 
 .LoginPage-rightButton > p{

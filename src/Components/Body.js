@@ -21,7 +21,7 @@ const Body = () => {
 
     }
     const fetchData = async () => {
-        const response = await axios.post(`http://localhost:5000/getInboxList`, { email: 'authUserData.email' });
+        const response = await axios.post(`http://localhost:5000/getInboxList`, { authToken: localStorage.getItem('authToken') });
         setInboxList(response.data.inboxList);
     };
 
