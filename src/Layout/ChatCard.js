@@ -3,7 +3,10 @@ import './ChatCard.css'
 
 const ChatCard = (props) => {
 
-  const {inboxName} = props;
+  const {inboxName, paybaleAmount} = props;
+
+  // const amountTextColor = paybaleAmount === 0 ? 'white' : (paybaleAmount > 0 ? '#507050' : '#846464');
+
 
   return (
     <>
@@ -14,8 +17,8 @@ const ChatCard = (props) => {
         <div className='ChatCard-details'>
             <p className='ChatCard-name'>{inboxName}</p>
             <div className='ChatCard-info'>
-                <p className='ChatCard-info-credit' style={{'color':'#507050'}}> +500 </p>
-                <p className='ChatCard-info-debit' style={{'color':'#846464'}}> -400 </p>
+                {/* <p className='ChatCard-info-credit' style={{'color': amountTextColor}}> {paybaleAmount} </p> */}
+                <p className='ChatCard-info-debit' style={{'color':'#846464'}}> {paybaleAmount} </p>
             </div>
 
         </div>

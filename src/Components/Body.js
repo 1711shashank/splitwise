@@ -9,26 +9,55 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 const Body = () => {
 
+    // let paybaleAmount = 0;
+    // let netAmount = 40;
     const navigate = useNavigate();
     const [inboxList, setInboxList] = useState([]);
+    const [paybaleAmount, setPaybaleAmount] = useState();
 
     const handalClickChatCard = (inboxId) => {
-        localStorage.setItem('inboxId',inboxId);
+        localStorage.setItem('inboxId', inboxId);
         navigate("/inbox");
     }
     const handalClickCreateGroup = () => {
         navigate("/createGroup");
 
     }
+
     const fetchData = async () => {
         const response = await axios.post(`http://localhost:5000/getInboxList`, { authToken: localStorage.getItem('authToken') });
         setInboxList(response.data.inboxList);
+        console.log(response.data.inboxList);
     };
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+    const calAmount = () => {
 
+        let netAmount = 0;
+
+        inboxList.forEach((inbox) => {
+            inbox.messageCard.forEach((curMessageCard) => {
+                if (curMessageCard.email === localStorage.getItem('email'))
+                    netAmount += parseInt(curMessageCard.amount);
+                else {
+                    netAmount -= parseInt(curMessageCard.amount);
+                }
+            });
+        });
+
+        setPaybaleAmount(netAmount);
+        console.log(netAmount);
+
+    }
+
+    useEffect( () => {
+
+        (async () => {
+            await fetchData();
+            await calAmount();
+        })()
+
+
+    }, [paybaleAmount]);
 
     return (
         <>
@@ -36,8 +65,8 @@ const Body = () => {
                 {
                     inboxList.map((curIndexList) => (
                         <div className='body-chatcard' key={curIndexList._id}>
-                            <div onClick={() => handalClickChatCard(curIndexList._id )}>
-                                <ChatCard inboxName={curIndexList.inboxName} />
+                            <div onClick={() => handalClickChatCard(curIndexList._id)}>
+                                <ChatCard paybaleAmount={paybaleAmount} inboxName={curIndexList.inboxName} />
                             </div>
                         </div>
                     ))

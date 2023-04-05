@@ -9,8 +9,7 @@ import axios from 'axios';
 
 const InboxPage = () => {
 
-    const navigate = useNavigate();
-
+    const navigate = useNavigate();    
     const [inboxData, setIndoxData] = useState({});
     const [messageCardArray, setMessageCardArray] = useState([]);
 
