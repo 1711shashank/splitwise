@@ -17,7 +17,7 @@ function AddSplit() {
 
     const navigate = useNavigate();
     const emailInput = useRef(0);
-    const numberOfMembers = inboxMemberArray.length;
+    const numberOfMembers = selectedMember.length;
 
     const fetchData = async () => {
         const response = await axios.post(`http://localhost:5000/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
@@ -71,7 +71,7 @@ function AddSplit() {
                     {inboxMemberArray.map((curInboxMember) => (
                         <ListItem className='AddSplit-SplitBetweenProfiles' key={curInboxMember.email} dense button onClick={handleToggle(curInboxMember.email)}>
                             <div className='AddSplit-SplitBetweenProfiles-left'>
-                                <Checkbox checked={selectedMember.includes(curInboxMember.email)} />
+                                <Checkbox checked={ selectedMember.includes(curInboxMember.email) } />
                                 <div className='ChatCard-avatar'>
                                     <img src='https://static.vecteezy.com/system/resources/previews/006/487/917/original/man-avatar-icon-free-vector.jpg' width='35px' height='35px' alt='' />
                                 </div>
@@ -80,7 +80,7 @@ function AddSplit() {
 
                             <div className='AddSplit-SplitBetweenProfiles-right'>
                                 <p style={{ fontSize: '16px', width: 80, color: 'white', padding: '0 10px' }}>
-                                    {amount / numberOfMembers}
+                                   { selectedMember.includes(curInboxMember.email) ? (amount / numberOfMembers) : 0 }
                                 </p>
                             </div>
                         </ListItem>
