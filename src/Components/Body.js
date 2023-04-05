@@ -4,16 +4,14 @@ import './Body.css'
 import ChatCard from '../Layout/ChatCard'
 import { useNavigate } from "react-router-dom";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import { calculatePaybaleAmount } from '../Utils/calculatePaybaleAmount';
 
 
 
 const Body = () => {
 
-    // let paybaleAmount = 0;
-    // let netAmount = 40;
     const navigate = useNavigate();
     const [inboxList, setInboxList] = useState([]);
-    const [paybaleAmount, setPaybaleAmount] = useState();
 
     const handalClickChatCard = (inboxId) => {
         localStorage.setItem('inboxId', inboxId);
@@ -30,34 +28,9 @@ const Body = () => {
         console.log(response.data.inboxList);
     };
 
-    const calAmount = () => {
-
-        let netAmount = 0;
-
-        inboxList.forEach((inbox) => {
-            inbox.messageCard.forEach((curMessageCard) => {
-                if (curMessageCard.email === localStorage.getItem('email'))
-                    netAmount += parseInt(curMessageCard.amount);
-                else {
-                    netAmount -= parseInt(curMessageCard.amount);
-                }
-            });
-        });
-
-        setPaybaleAmount(netAmount);
-        console.log(netAmount);
-
-    }
-
-    useEffect( () => {
-
-        (async () => {
-            await fetchData();
-            await calAmount();
-        })()
-
-
-    }, [paybaleAmount]);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -65,8 +38,9 @@ const Body = () => {
                 {
                     inboxList.map((curIndexList) => (
                         <div className='body-chatcard' key={curIndexList._id}>
+
                             <div onClick={() => handalClickChatCard(curIndexList._id)}>
-                                <ChatCard paybaleAmount={paybaleAmount} inboxName={curIndexList.inboxName} />
+                                <ChatCard paybaleAmount={calculatePaybaleAmount(curIndexList)} inboxName={curIndexList.inboxName} />
                             </div>
                         </div>
                     ))

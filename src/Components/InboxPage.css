@@ -11,10 +11,22 @@
 }
 
 .InboxPage-headerName{
-    padding-left: 2rem;
-    font-size: 1.7rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: lightgray;
+}
+
+.InboxPage-headerMid{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 2rem;
+}
+
+.InboxPage-headerAmount{
+    font-size: 1.3rem;
+    padding-top: 0.5rem;
 }
 
 .InboxPage-headerLeft{
