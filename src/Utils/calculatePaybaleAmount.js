@@ -7,7 +7,9 @@ export function calculatePaybaleAmount(inboxData) {
         if (curMessageCard.senderEmail === localStorage.getItem('email'))
             netAmount += parseInt(curMessageCard.amount);
         else {
-            netAmount -= parseInt(curMessageCard.amount);
+            if(curMessageCard.splitBetween.includes(localStorage.getItem('email'))){
+                netAmount -= parseInt(Math.ceil(curMessageCard.amount/curMessageCard.splitBetween.length));
+            }
         }
     });
     console.log('utils', netAmount);
