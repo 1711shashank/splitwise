@@ -30,7 +30,7 @@ const Home = () => {
             localStorage.setItem('authToken', authToken);
             localStorage.setItem('email', email);
 
-            window.location.href = 'http://localhost:3000';
+            window.location.href = '/';
         }
 
     }, []);

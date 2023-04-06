@@ -20,7 +20,7 @@ function AddSplit() {
     const numberOfMembers = selectedMember.length;
 
     const fetchData = async () => {
-        const response = await axios.post(`http://localhost:5000/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
+        const response = await axios.post(`https://splitwise-server.onrender.com/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
         setInboxMemberArray(response.data.inboxData.inboxMember);
         console.log(response.data.inboxData.inboxMember);
     };
@@ -52,7 +52,7 @@ function AddSplit() {
             splitBetween: selectedMember
         }
 
-        await axios.post(`http://localhost:5000/sentMessage`, { authToken: localStorage.getItem('authToken'), newMessage });
+        await axios.post(`https://splitwise-server.onrender.com/sentMessage`, { authToken: localStorage.getItem('authToken'), newMessage });
 
         navigate("/inbox");
 

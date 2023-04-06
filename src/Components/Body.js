@@ -23,7 +23,7 @@ const Body = () => {
     }
 
     const fetchData = async () => {
-        const response = await axios.post(`http://localhost:5000/getInboxList`, { authToken: localStorage.getItem('authToken') });
+        const response = await axios.post(`https://splitwise-server.onrender.com/getInboxList`, { authToken: localStorage.getItem('authToken') });
         setInboxList(response.data.inboxList);
         console.log(response.data.inboxList);
     };
