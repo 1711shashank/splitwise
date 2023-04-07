@@ -27,7 +27,7 @@ const InboxPage = () => {
     }
 
     const fetchData = async () => {
-        const response = await axios.post(`https://splitwise-server.onrender.com/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
+        const response = await axios.post(`http://localhost:5000/getMessages`, { authToken: localStorage.getItem('authToken'), inboxId: localStorage.getItem('inboxId') });
 
         setIndoxData(response.data.inboxData);
         setMessageCardArray(response.data.inboxData.messageCard);
@@ -36,6 +36,7 @@ const InboxPage = () => {
     };
 
     useEffect(() => {
+        if(localStorage.getItem('authToken') === null) navigate("/login");
         fetchData();
     }, []);
 
@@ -53,7 +54,6 @@ const InboxPage = () => {
                         <div className='InboxPage-headerMid'>
                             <p className='InboxPage-headerName'> {inboxData.inboxName} </p>
                             <p className='InboxPage-headerAmount' style={{'color': amountTextColor }}> {paybaleAmount} </p>
-
                         </div>
 
                     </div>

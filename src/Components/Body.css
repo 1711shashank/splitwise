@@ -1,3 +1,41 @@
+.header {
+    display: flex;
+    padding: 0 1rem 0 2.5rem;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0; 
+    height: 7rem;
+    width: 100vw;
+    background-color: #1F2C33;
+}
+
+.heading-title{
+    color: #ADBAC1;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.header-logout{
+    margin: 0 !important;
+    font-size: 1.5rem !important;
+    padding: 2rem !important;
+    background-color: #323b3f !important;
+    color: white !important;
+    border-radius: 5px !important;
+
+    text-align: center !important;
+    justify-content: center !important;
+}
+.header-logoutMenu > *{
+    border-radius: 5rem !important;
+    left: -8rem !important;
+}
+.szh-menu{
+    padding: 0 !important;
+}
+    
+
 .body{
     padding-top: 7rem;
     height: 100vh;
