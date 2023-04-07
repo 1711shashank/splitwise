@@ -6,7 +6,7 @@ const LoginPage = () => {
 
     const handalClickLoginButton = async () => {
         try {
-            window.location.href = 'http://localhost:5000/oauth';
+            window.location.href = 'https://splitwise-server.onrender.com/oauth';
         } catch (error) {
             console.log(error);
         }
